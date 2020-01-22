@@ -8,12 +8,12 @@ let arrayWithData = [];
 const app = express();
 const port = process.env.PORT || 5000;
 const datasrc = "SHEET" // "TSV" or "SHEET"
-const approvedSheetName = '3.Approved';
+const approvedSheetName = 'CM/SP Act';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-const publicSpreadsheetUrl = "https://docs.google.com/spreadsheets/d/10VdwUE0v7z1_Yz7q1EjAAXBUp9my8mRybOIX4gO6cR8/edit?usp=sharing";
+const publicSpreadsheetUrl = "https://docs.google.com/spreadsheets/d/11ijBr6M7nZsNy0ka-T0DK1jxMc1RsBRw3OpYwEZIEZw/edit?usp=sharing";
 
 // Datasource check with datasrc var
 app.get('/getBlockData', async (req, res) => {
@@ -50,11 +50,11 @@ function getSheetData() {
 function processSheetData(tabletop) {
   if(tabletop.models[approvedSheetName]){
     let data = tabletop.models[approvedSheetName].elements;
-    let newjson = {"cities":{},"totalVideos":0}
+    let newjson = {"states":{},"totalVideos":0}
     data.map(currentline => {
         if(!isNaN(currentline['Latitude (°N)']) && !isNaN(currentline['Longitude (°E)'])) {
-            if(newjson.cities[currentline['City']] !== undefined) {
-                newjson.cities[currentline['City']].videos.push({
+            if(newjson.states[currentline['State']] !== undefined) {
+                newjson.states[currentline['State']].videos.push({
                     link: currentline['Content URL'],
                     caption: currentline['Caption'],
                     date: currentline['Event Date'],
@@ -65,7 +65,7 @@ function processSheetData(tabletop) {
                 })
             }
             else {
-                newjson.cities[currentline['City']] = {
+                newjson.states[currentline['State']] = {
                     videos: [{
                       link: currentline['Content URL'],
                       caption: currentline['Caption'],
@@ -84,15 +84,15 @@ function processSheetData(tabletop) {
         }
     })
     let sortable = [];
-    for (let city in newjson.cities) {
-        sortable.push([city, newjson.cities[city]]);
+    for (let city in newjson.states) {
+        sortable.push([city, newjson.states[city]]);
     }
     sortable.sort((a,b) => (a[1].videos.length > b[1].videos.length) ? 1 : ((b[1].videos.length > a[1].videos.length) ? -1 : 0));
     let objSorted = {}
     sortable.forEach(function(item){
         objSorted[item[0]]=item[1]
     })
-    newjson.cities = objSorted
+    newjson.states = objSorted
     newjson.totalVideos = data.length;
     return (newjson)
   }
@@ -113,20 +113,20 @@ function tsvJSON(tsv) {
     let longIndex = titleLine.split(/\t/).indexOf('Longitude (°E)');
     let linkIndex = titleLine.split(/\t/).indexOf('Link');
     let cityIndex = titleLine.split(/\t/).indexOf('City');
-    let newjson = {"cities":{},"totalVideos":0}
+    let newjson = {"states":{},"totalVideos":0}
 
     lines.map(line => {
         let currentline = line.split(/\t/);
         if(!isNaN(currentline['Latitude (°N)']) && !isNaN(currentline['Longitude (°E)'])) {
-            if(newjson.cities[currentline[cityIndex]] != undefined) {
-                newjson.cities[currentline[cityIndex]].videos.push({
+            if(newjson.states[currentline[cityIndex]] != undefined) {
+                newjson.states[currentline[cityIndex]].videos.push({
                     link: currentline[linkIndex],
                     caption: currentline[captionIndex],
                     date: currentline[dateIndex]
                 })
             }
             else {
-                newjson.cities[currentline[cityIndex]] = {
+                newjson.states[currentline[cityIndex]] = {
                     videos: [{
                         link: currentline[linkIndex],
                         caption: currentline[captionIndex],
