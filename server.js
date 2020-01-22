@@ -50,34 +50,36 @@ function getSheetData() {
 function processSheetData(tabletop) {
   if(tabletop.models[approvedSheetName]){
     let data = tabletop.models[approvedSheetName].elements;
-    let newjson = {"states":{},"totalVideos":0}
+    console.log(data[0])
+    let newjson = {"states":{},"totalBlocks":0}
     data.map(currentline => {
         if(!isNaN(currentline['Latitude (°N)']) && !isNaN(currentline['Longitude (°E)'])) {
             if(newjson.states[currentline['State']] !== undefined) {
-                newjson.states[currentline['State']].videos.push({
-                    link: currentline['Content URL'],
-                    caption: currentline['Caption'],
-                    date: currentline['Event Date'],
-                    protestName: currentline['Protest Name'],
-                    eventType: currentline['Event Type'],
-                    eventLocation: currentline['Event Location'],
-                    sourceURL: currentline['Source URL']
+                newjson.states[currentline['State']].blocks.push({
+                    link: "",//currentline['Content URL'],
+                    caption: currentline['Name of Coal Mine/Block'],
+                    //caption: currentline['Caption'],
+                    //date: currentline['Event Date'],
+                    //protestName: currentline['Protest Name'],
+                    //eventType: currentline['Event Type'],
+                    //eventLocation: currentline['Event Location'],
+                    //sourceURL: currentline['Source URL']
                 })
             }
             else {
                 newjson.states[currentline['State']] = {
-                    videos: [{
-                      link: currentline['Content URL'],
-                      caption: currentline['Caption'],
-                      date: currentline['Event Date'],
-                      protestName: currentline['Protest Name'],
-                      eventType: currentline['Event Type'],
-                      eventLocation: currentline['Event Location'],
-                      sourceURL: currentline['Source URL']
+                    blocks: [{
+                      link: "", //currentline['Content URL'],
+                      caption: currentline['Name of Coal Mine/Block'],
+                      //date: currentline['Event Date'],
+                      //protestName: currentline['Protest Name'],
+                      //eventType: currentline['Event Type'],
+                      //eventLocation: currentline['Event Location'],
+                      //sourceURL: currentline['Source URL']
                     }],
                     coordinates: {
-                    latitude: currentline['Latitude (°N)'],
-                    longitude: currentline['Longitude (°E)']
+                      latitude: currentline['Latitude (°N)'],
+                      longitude: currentline['Longitude (°E)']
                     }
                 }
             }
@@ -87,13 +89,13 @@ function processSheetData(tabletop) {
     for (let city in newjson.states) {
         sortable.push([city, newjson.states[city]]);
     }
-    sortable.sort((a,b) => (a[1].videos.length > b[1].videos.length) ? 1 : ((b[1].videos.length > a[1].videos.length) ? -1 : 0));
+    sortable.sort((a,b) => (a[1].blocks.length > b[1].blocks.length) ? 1 : ((b[1].blocks.length > a[1].blocks.length) ? -1 : 0));
     let objSorted = {}
     sortable.forEach(function(item){
         objSorted[item[0]]=item[1]
     })
     newjson.states = objSorted
-    newjson.totalVideos = data.length;
+    newjson.totalBlocks = data.length;
     return (newjson)
   }
   else {
@@ -113,13 +115,13 @@ function tsvJSON(tsv) {
     let longIndex = titleLine.split(/\t/).indexOf('Longitude (°E)');
     let linkIndex = titleLine.split(/\t/).indexOf('Link');
     let cityIndex = titleLine.split(/\t/).indexOf('City');
-    let newjson = {"states":{},"totalVideos":0}
+    let newjson = {"states":{},"totalBlocks":0}
 
     lines.map(line => {
         let currentline = line.split(/\t/);
         if(!isNaN(currentline['Latitude (°N)']) && !isNaN(currentline['Longitude (°E)'])) {
             if(newjson.states[currentline[cityIndex]] != undefined) {
-                newjson.states[currentline[cityIndex]].videos.push({
+                newjson.states[currentline[cityIndex]].blocks.push({
                     link: currentline[linkIndex],
                     caption: currentline[captionIndex],
                     date: currentline[dateIndex]
@@ -140,7 +142,7 @@ function tsvJSON(tsv) {
             }
         }
     })
-    newjson.totalVideos = lines.length;
+    newjson.totalBlocks = lines.length;
     resolve(newjson);
     // reject({
     //   error: 'something went wrong in tsv to JSON conversion'

@@ -1,4 +1,333 @@
 {
-  "cities": {},
-  "totalVideos": 68
+  "states": {
+    "West Bengal": {
+      "blocks": [
+        {
+          "link": "",
+          "caption": "Jaganathpur A"
+        }
+      ],
+      "coordinates": {
+        "latitude": "22.9868",
+        "longitude": "87.855"
+      }
+    },
+    "Telengana": {
+      "blocks": [
+        {
+          "link": "",
+          "caption": "Anesttipali"
+        },
+        {
+          "link": "",
+          "caption": "Punkula-Chilka"
+        }
+      ],
+      "coordinates": {
+        "latitude": "18.1124",
+        "longitude": "79.0193"
+      }
+    },
+    "Madhya Pradesh": {
+      "blocks": [
+        {
+          "link": "",
+          "caption": "Marki Barka"
+        },
+        {
+          "link": "",
+          "caption": "Rawanwara North"
+        },
+        {
+          "link": "",
+          "caption": "Semaria/ Piparia"
+        },
+        {
+          "link": "",
+          "caption": "Shahapur East"
+        },
+        {
+          "link": "",
+          "caption": "Shahpur West"
+        },
+        {
+          "link": "",
+          "caption": "Thesgora-B/ Rudrapuri"
+        },
+        {
+          "link": "",
+          "caption": "Urtan North"
+        }
+      ],
+      "coordinates": {
+        "latitude": "22.9734",
+        "longitude": "78.6569"
+      }
+    },
+    "Odisha": {
+      "blocks": [
+        {
+          "link": "",
+          "caption": "Chhendipada"
+        },
+        {
+          "link": "",
+          "caption": "Chhendipada-II"
+        },
+        {
+          "link": "",
+          "caption": "Machhakata"
+        },
+        {
+          "link": "",
+          "caption": "Mahanadi"
+        },
+        {
+          "link": "",
+          "caption": "Nuagaon Telisahi"
+        },
+        {
+          "link": "",
+          "caption": "Radhikapur (East)"
+        },
+        {
+          "link": "",
+          "caption": "Radhikapur (West)"
+        },
+        {
+          "link": "",
+          "caption": "Ramchandi Promotion Block"
+        }
+      ],
+      "coordinates": {
+        "latitude": "20.9517",
+        "longitude": "85.0985"
+      }
+    },
+    "Maharashtra": {
+      "blocks": [
+        {
+          "link": "",
+          "caption": "Bander"
+        },
+        {
+          "link": "",
+          "caption": "Bhandak West"
+        },
+        {
+          "link": "",
+          "caption": "Chinora"
+        },
+        {
+          "link": "",
+          "caption": "Dahegaon/ Makardhokra - IV"
+        },
+        {
+          "link": "",
+          "caption": "Gondkhari"
+        },
+        {
+          "link": "",
+          "caption": "Khappa & Extn"
+        },
+        {
+          "link": "",
+          "caption": "Kosar Dongargaon"
+        },
+        {
+          "link": "",
+          "caption": "Majra"
+        },
+        {
+          "link": "",
+          "caption": "Marki Mangli II"
+        },
+        {
+          "link": "",
+          "caption": "Marki Mangli IV"
+        },
+        {
+          "link": "",
+          "caption": "Marki-Zari-Jamani-Adkoli"
+        },
+        {
+          "link": "",
+          "caption": "Takli-Jena-Bellora (North) & Takli-Jena-Bellora (South)"
+        },
+        {
+          "link": "",
+          "caption": "Warora"
+        },
+        {
+          "link": "",
+          "caption": "Warora (West) Southern Part"
+        },
+        {
+          "link": "",
+          "caption": "Warora West (North)"
+        }
+      ],
+      "coordinates": {
+        "latitude": "19.7515",
+        "longitude": "75.7139"
+      }
+    },
+    "Chhattisgarh": {
+      "blocks": [
+        {
+          "link": "",
+          "caption": "Datima"
+        },
+        {
+          "link": "",
+          "caption": "Fatehpur"
+        },
+        {
+          "link": "",
+          "caption": "Fatehpur East"
+        },
+        {
+          "link": "",
+          "caption": "Gare Palma IV/1"
+        },
+        {
+          "link": "",
+          "caption": "Gare Palma IV/7"
+        },
+        {
+          "link": "",
+          "caption": "Kesla North"
+        },
+        {
+          "link": "",
+          "caption": "Madanpur (North)"
+        },
+        {
+          "link": "",
+          "caption": "Morga-II"
+        },
+        {
+          "link": "",
+          "caption": "Morga-III"
+        },
+        {
+          "link": "",
+          "caption": "Morga-IV"
+        },
+        {
+          "link": "",
+          "caption": "Panchbahani"
+        },
+        {
+          "link": "",
+          "caption": "Rajgamar Dipside (Deavnara)"
+        },
+        {
+          "link": "",
+          "caption": "Sayang"
+        },
+        {
+          "link": "",
+          "caption": "Shankarpur Bhatgaon II Extn."
+        },
+        {
+          "link": "",
+          "caption": "Sondhia"
+        }
+      ],
+      "coordinates": {
+        "latitude": "21.2787",
+        "longitude": "81.8661"
+      }
+    },
+    "Jharkhand": {
+      "blocks": [
+        {
+          "link": "",
+          "caption": "Ashok Karkatta Central"
+        },
+        {
+          "link": "",
+          "caption": "Brahmadiha"
+        },
+        {
+          "link": "",
+          "caption": "Bundu"
+        },
+        {
+          "link": "",
+          "caption": "Burakhap small patch"
+        },
+        {
+          "link": "",
+          "caption": "Chakla"
+        },
+        {
+          "link": "",
+          "caption": "Chitarpur"
+        },
+        {
+          "link": "",
+          "caption": "Choritand Tiliaya"
+        },
+        {
+          "link": "",
+          "caption": "Gondulpara"
+        },
+        {
+          "link": "",
+          "caption": "Jainagar"
+        },
+        {
+          "link": "",
+          "caption": "Jogeshwar & Khas Jogeshwar"
+        },
+        {
+          "link": "",
+          "caption": "Lalgarh (North)"
+        },
+        {
+          "link": "",
+          "caption": "Latehar"
+        },
+        {
+          "link": "",
+          "caption": "Mahuagarhi"
+        },
+        {
+          "link": "",
+          "caption": "North Dhadu"
+        },
+        {
+          "link": "",
+          "caption": "Patratu"
+        },
+        {
+          "link": "",
+          "caption": "Rajhara North (Central & Eastern)"
+        },
+        {
+          "link": "",
+          "caption": "Rauta Closed mine"
+        },
+        {
+          "link": "",
+          "caption": "Seregarha"
+        },
+        {
+          "link": "",
+          "caption": "Sitanala"
+        },
+        {
+          "link": "",
+          "caption": "Urma-Paharitola"
+        }
+      ],
+      "coordinates": {
+        "latitude": "23.6102",
+        "longitude": "85.2799"
+      }
+    }
+  },
+  "totalBlocks": 68
 }
