@@ -8,6 +8,7 @@ let arrayWithData = [];
 const app = express();
 const port = process.env.PORT || 5000;
 const datasrc = "SHEET" // "TSV" or "SHEET"
+const approvedSheetName = '3.Approved';
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
@@ -15,7 +16,7 @@ app.use(bodyParser.urlencoded({
 const publicSpreadsheetUrl = "https://docs.google.com/spreadsheets/d/10VdwUE0v7z1_Yz7q1EjAAXBUp9my8mRybOIX4gO6cR8/edit?usp=sharing";
 
 // Datasource check with datasrc var
-app.get('/getVideoData', async (req, res) => {
+app.get('/getBlockData', async (req, res) => {
   if (datasrc === "TSV") {
     let rawtsv = fs.readFileSync('./RawData/VideoData.tsv', 'utf8')
     let revisedJSON = await tsvJSON(rawtsv);
@@ -32,21 +33,23 @@ app.get('/getVideoData', async (req, res) => {
 
 })
 
-// Pulling from Google Sheets with Tabletop 
+// Pulling from Google Sheets with Tabletop
 function getSheetData() {
   return new Promise((resolve) => {
     Tabletop.init({
       key: publicSpreadsheetUrl,
       callback: function(data, tabletop) {
-        resolve(processSheetData(data, tabletop));
+        resolve(processSheetData(tabletop));
       },
       simpleSheet: true
     })
   })
 }
 
-//Cleaning up the sheet data 
-function processSheetData(data, tabletop) {
+//Cleaning up the sheet data
+function processSheetData(tabletop) {
+  if(tabletop.models[approvedSheetName]){
+    let data = tabletop.models[approvedSheetName].elements;
     let newjson = {"cities":{},"totalVideos":0}
     data.map(currentline => {
         if(!isNaN(currentline['Latitude (°N)']) && !isNaN(currentline['Longitude (°E)'])) {
@@ -92,9 +95,14 @@ function processSheetData(data, tabletop) {
     newjson.cities = objSorted
     newjson.totalVideos = data.length;
     return (newjson)
+  }
+  else {
+    console.log(`No sheet called ${approvedSheetName}`)
+    return (`No sheet is called ${approvedSheetName}`)
+  }
 }
 
-//Cleaning up the TSV data 
+//Cleaning up the TSV data
 function tsvJSON(tsv) {
   return new Promise((resolve, reject) => {
     var lines = tsv.split(/\r?\n/);
