@@ -63,9 +63,9 @@ export function MapLayer(props) {
                             <motion.div
                                 className="marker_txt"
                                 style = {{
-                                    width: `calc(1rem + 0.2 * ${String(videoData[city].videos.length)}rem)`, 
-                                    height: `calc(1rem + 0.2 * ${String(videoData[city].videos.length)}rem)`, 
-                                    lineHeight: `calc(1rem + 0.2 * ${String(videoData[city].videos.length)}rem)`
+                                    width: `calc(1rem + 0.2 * ${String(videoData[city].blocks.length)}rem)`, 
+                                    height: `calc(1rem + 0.2 * ${String(videoData[city].blocks.length)}rem)`, 
+                                    lineHeight: `calc(1rem + 0.2 * ${String(videoData[city].blocks.length)}rem)`
                                 }}
                                 initial = {{scale: 1}}
                                 animate= {{scale: 1.05}}
@@ -74,9 +74,9 @@ export function MapLayer(props) {
                                     ease: 'easeOut',
                                     duration: 0.5
                                 }}
-                                ><p>{isZoomFriendly(videoData[city].videos.length) && videoData[city].videos.length}</p>
+                                ><p>{isZoomFriendly(videoData[city].blocks.length) && videoData[city].blocks.length}</p>
                             </motion.div>
-                            {isZoomFriendly(videoData[city].videos.length) && <p style={{color: '#fffcf2'}}>{city}</p>}
+                            {isZoomFriendly(videoData[city].blocks.length) && <p style={{color: '#fffcf2'}}>{city}</p>}
                         </button>
                     </Marker>
                 )})

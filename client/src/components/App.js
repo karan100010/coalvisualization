@@ -3,14 +3,14 @@ import Firebase from 'firebase';
 import {PageView, initGA} from './Tracking';
 import {MapLayer} from './MapLayer.js';
 import {CityDetailView} from './CityDetailView.js'; 
-import {SubmitForm} from './SubmitForm.js';
-import {IntroScreen} from './IntroScreen';
-import {About} from './About'
+//import {SubmitForm} from './SubmitForm.js';
+//import {IntroScreen} from './IntroScreen';
+//import {About} from './About'
 import {SecNav} from './SecNav.js'
 import './CSS/App.css'
 
 const fetchJSON = async() => {
-  const res = await fetch('/getVideoData');
+  const res = await fetch('/getBlockData');
   const body = await res.json();
   if(res.status !== 200) throw Error(body.message)
   return body;
@@ -40,8 +40,8 @@ function App() {
     PageView('Intro')
     fetchJSON()
       .then(res => {
-        setVideoData(res.cities);
-        let citiesArray = Object.keys(res.cities);
+        setVideoData(res.states);
+        let citiesArray = Object.keys(res.states);
         let urlLocation = window.location.href
         let hashCity = urlLocation.split('#')[1];
         if(hashCity !== undefined && hashCity.length>1) {
