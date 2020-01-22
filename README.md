@@ -1,6 +1,6 @@
 # Coal Block Information on a Map
 
-![Data Source - GoI CBIS](https://coalblock-is.cmpdi.co.in/pages/dashboard.php)
+[Data Source - GoI CBIS](https://coalblock-is.cmpdi.co.in/pages/dashboard.php)
 ## Development
 
 This project is a fork of the [CAAProtests](https://github.com/kshivanku/CAAProtests) codebase. 
