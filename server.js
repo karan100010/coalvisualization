@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({
 const publicSpreadsheetUrl = "https://docs.google.com/spreadsheets/d/10VdwUE0v7z1_Yz7q1EjAAXBUp9my8mRybOIX4gO6cR8/edit?usp=sharing";
 
 // Datasource check with datasrc var
-app.get('/getVideoData', async (req, res) => {
+app.get('/getBlockData', async (req, res) => {
   if (datasrc === "TSV") {
     let rawtsv = fs.readFileSync('./RawData/VideoData.tsv', 'utf8')
     let revisedJSON = await tsvJSON(rawtsv);
@@ -32,7 +32,7 @@ app.get('/getVideoData', async (req, res) => {
 
 })
 
-// Pulling from Google Sheets with Tabletop 
+// Pulling from Google Sheets with Tabletop
 function getSheetData() {
   return new Promise((resolve) => {
     Tabletop.init({
@@ -45,7 +45,7 @@ function getSheetData() {
   })
 }
 
-//Cleaning up the sheet data 
+//Cleaning up the sheet data
 function processSheetData(data, tabletop) {
     let newjson = {"cities":{},"totalVideos":0}
     data.map(currentline => {
@@ -94,7 +94,7 @@ function processSheetData(data, tabletop) {
     return (newjson)
 }
 
-//Cleaning up the TSV data 
+//Cleaning up the TSV data
 function tsvJSON(tsv) {
   return new Promise((resolve, reject) => {
     var lines = tsv.split(/\r?\n/);
