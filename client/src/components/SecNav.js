@@ -8,8 +8,8 @@ export function SecNav(props) {
     return (
         <ul className="secNavContainer">
             <li><a 
-                href="#" 
-                datacontent="Law Makers, Law Breakers"
+                href="https://coalblock-is.cmpdi.co.in/pages/dashboard.php" 
+                datacontent="Coal Block Information on a Map"
                 style={{backgroundImage: `url(${info})`}} 
                 onClick={()=> {
                     handleAboutClicked();
